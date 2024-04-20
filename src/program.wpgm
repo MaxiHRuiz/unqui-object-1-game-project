@@ -1,0 +1,35 @@
+import wollok.game.*
+import extras.*
+import main_character.*
+
+program Game {
+
+	game.title("game")
+	//game.boardGround("fondo.jpg")
+	game.height(10)
+	game.width(10)
+	
+	const muroIzq = new Muro(border ='left-down')
+	muroIzq.setPosition(0, 1)
+	const muroDer = new Muro(border ='right-down')
+	muroDer.setPosition(9, 1)
+	
+	
+	//game.addVisualCharacter(mainCharacter)
+	teclado.configurar()
+	game.addVisual(mainCharacter)
+	game.addVisual(muroIzq)
+	game.addVisual(muroDer)
+		
+	
+  	game.whenCollideDo(mainCharacter, { m => 
+    	m.whenCollide(mainCharacter)
+  	})
+	
+	game.start()
+
+}
+
+
+
+
