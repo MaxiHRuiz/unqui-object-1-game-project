@@ -8,19 +8,62 @@ object mainCharacter {
 	method image() = "./assets/entrenador.png"
 
 
-	method irA(nuevaPosicion, newDirection) {
+	method irA(newPosition, newDirection) {
 		self.direction(newDirection)
-		position = nuevaPosicion
+		position = newPosition
 	}
 	
-	method decirDireccion(){
+	method sayDirection(){
 		game.say(self, direction.say()) 
 	}
 	
 	method evadeCollide(){
 		position = direction.newPosition(self.position())
 	}
-	
+}
+
+
+
+object leftDirection {
+	method newPosition(currentPosition) {
+		return new Position(x = currentPosition.x() + 1, y = currentPosition.y())
+	}
+
+	method say() {
+		return 'left'
+	}
 
 }
 
+object downDirection {
+	method newPosition(currentPosition) {
+		return new Position(x = currentPosition.x(), y = currentPosition.y() + 1)
+	}
+
+	method say() {
+		return 'down'
+	}
+
+}
+
+object rightDirection {
+	method newPosition(currentPosition) {
+		return new Position(x = currentPosition.x() - 1, y = currentPosition.y())
+	}
+
+	method say() {
+		return 'right'
+	}
+
+}
+
+object toptDirection {
+	method newPosition(currentPosition) {
+		return new Position(x = currentPosition.x(), y = currentPosition.y() - 1)
+	}
+
+	method say() {
+		return 'top'
+	}
+
+}
